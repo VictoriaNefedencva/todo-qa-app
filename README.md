@@ -1,65 +1,103 @@
-# Todo App: QA Automation Example
+# React + Node.js Todo App
 
-## Task
+A fullstack application featuring authentication and todo CRUD. Includes automated tests (Cypress, Supertest), logging, CI, code coverage, and visual regression.
 
-React + Node.js app with login and todo CRUD.
-Automated tests (Cypress, Supertest), logging, CI, code coverage, and visual regression.
+---
 
-## Quick start
+## 🚀 Quick Start
 
-1. Backend
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/VictoriaNefedencva/todo-qa-app.git
+   cd todo-qa-app
+   ```
 
+2. **Install dependencies:**
+
+   For backend:
+   ```sh
+   cd backend
+   npm install
+   ```
+
+   For frontend:
+   ```sh
+   cd ../frontend
+   npm install
+   ```
+
+---
+
+## ▶️ Running the App
+
+**Backend:**
 ```sh
 cd backend
-npm install
 npm start
 ```
 
-2. Frontend
-
+**Frontend:**
 ```sh
 cd ../frontend
-npm install
 npx serve -s .
 ```
 
-3. API tests
+---
 
+## 🧪 Testing
+
+**API tests:**
 ```sh
 cd backend
 npm test
 ```
 
-4. UI (Cypress) tests
-
+**UI (Cypress) tests:**
 ```sh
 cd frontend
 npx serve -s . &
 npm test
 ```
-or open Cypress GUI: `npm run cypress:open`
+or open the Cypress GUI:
+```sh
+npm run cypress:open
+```
 
-5. Visual regression tests
-
+**Visual regression tests:**
 ```sh
 cd frontend
 npm run test:snapshots
 ```
 
-## Test plan
+---
+
+## 📝 Test Plan
 
 - Login: valid/invalid credentials (UI and API)
 - CRUD: create, edit, delete todos (UI and API)
-- Error checks: missing data, wrong credentials, unauthorized
+- Error checks: missing data, wrong credentials, unauthorized access
 - Visual regression after login
 
-**Tools:**  
-Cypress (UI & visual), Supertest+Jest (API & coverage), GitHub Actions (CI), logging (backend to file, frontend to console).
+---
 
-**Limitations:**  
-In-memory storage, single test user: test/test, demo only.
+## 🛠️ Tools
 
-## Structure
+- Cypress (UI & visual)
+- Supertest + Jest (API & coverage)
+- GitHub Actions (CI)
+- Logging (backend — to file, frontend — to console)
+
+---
+
+## ⚠️ Limitations
+
+- In-memory storage
+- Single test user: **test / test**
+- For demo purposes only
+
+---
+
+## 📦 Repository Structure
 
 ```
 backend/     # Node.js + Express, tests and logging
@@ -68,4 +106,3 @@ frontend/    # React, Cypress, visual regression, logging
   workflows/
     ci.yml   # CI
 README.md
-```
