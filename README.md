@@ -1,64 +1,61 @@
-# React + Node.js Todo App
+# Test Plan for Todo QA App
 
-A fullstack application featuring authentication and todo CRUD. Includes automated tests (Cypress, Supertest), logging, CI, code coverage, and visual regression.
+## 1. What is Being Tested
 
----
+The Todo QA App is a fullstack application with authentication and todo CRUD functionality. The following aspects are covered by tests:
+- User authentication (login, invalid login)
+- Todo CRUD operations (create, read, update, delete)
+- API error handling (missing data, unauthorized, invalid requests)
+- UI functionality and rendering
+- Visual consistency of the UI (visual regression)
+- Code quality (via code coverage)
 
-## 🚀 Quick Start
+## 2. Test Coverage Areas
 
-1. **Clone the repository:**
-   ```sh
-   git clone https://github.com/VictoriaNefedencva/todo-qa-app.git
-   cd todo-qa-app
-   ```
+- **Backend (API)**
+  - Authentication endpoints
+  - CRUD endpoints for todos
+  - Error scenarios (invalid input, missing authorization)
+- **Frontend (UI)**
+  - Login form (valid/invalid credentials)
+  - Todo list rendering and CRUD actions
+  - UI error messages
+- **End-to-End (E2E)**
+  - Complete user flows (login, todo management)
+  - Integration between frontend and backend
+- **Visual Regression**
+  - UI appearance after key actions (e.g., after login)
 
-2. **Install dependencies:**
+## 3. Tools Used and Rationale
 
-   For backend:
-   ```sh
-   cd backend
-   npm install
-   ```
+- **Jest + Supertest** (backend API testing):
+  - Widely used for Node.js projects
+  - Enables HTTP request assertions and code coverage metrics
+- **Cypress** (frontend E2E and UI testing):
+  - Powerful for simulating real user interactions
+  - Supports visual regression plugins
+- **Cypress-image-snapshot** (visual testing):
+  - Automated screenshots and comparison for UI consistency
+- **GitHub Actions** (Continuous Integration):
+  - Automates running tests and code quality checks on each push
 
-   For frontend:
-   ```sh
-   cd ../frontend
-   npm install
-   ```
+## 4. How to Run the Tests
 
----
-
-## ▶️ Running the App
-
-**Backend:**
+**Backend (API) tests:**
 ```sh
 cd backend
-npm start
-```
-
-**Frontend:**
-```sh
-cd ../frontend
-npx serve -s .
-```
-
----
-
-## 🧪 Testing
-
-**API tests:**
-```sh
-cd backend
+npm install
 npm test
 ```
 
-**UI (Cypress) tests:**
+**Frontend (UI & E2E) tests:**
 ```sh
 cd frontend
+npm install
 npx serve -s . &
 npm test
 ```
-or open the Cypress GUI:
+or open Cypress UI:
 ```sh
 npm run cypress:open
 ```
@@ -69,40 +66,14 @@ cd frontend
 npm run test:snapshots
 ```
 
----
+Tests are also automatically run in CI via GitHub Actions on every code push.
 
-## 📝 Test Plan
+## 5. Assumptions and Limitations
 
-- Login: valid/invalid credentials (UI and API)
-- CRUD: create, edit, delete todos (UI and API)
-- Error checks: missing data, wrong credentials, unauthorized access
-- Visual regression after login
-
----
-
-## 🛠️ Tools
-
-- Cypress (UI & visual)
-- Supertest + Jest (API & coverage)
-- GitHub Actions (CI)
-- Logging (backend — to file, frontend — to console)
+- The app uses in-memory storage; data resets on server restart.
+- Only one test user exists: `test` / `test`
+- No persistent database or production authentication flows are implemented.
+- Visual regression tests use default viewport and may fail if run in different environments.
+- The project is intended for demo/testing purposes only, not for production.
 
 ---
-
-## ⚠️ Limitations
-
-- In-memory storage
-- Single test user: **test / test**
-- For demo purposes only
-
----
-
-## 📦 Repository Structure
-
-```
-backend/     # Node.js + Express, tests and logging
-frontend/    # React, Cypress, visual regression, logging
-.github/
-  workflows/
-    ci.yml   # CI
-README.md
